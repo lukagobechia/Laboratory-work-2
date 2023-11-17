@@ -1,19 +1,12 @@
-<div>
-    <app-user (usersChange)="onUsersChange($event)"></app-user>
-    <div>
-      <div style="flex-direction: column;">
-        <ul class="" style="list-style: none; display: flex; flex-direction: row; flex-wrap: wrap;">
-          <li class="border border-dark p-5 mt-5 w-25 ms-1" *ngFor="let user of users">
-            <div>
-              <p>First Name: {{ user.firstName }}</p>
-              <p>Last Name: {{ user.lastName }}</p>
-              <p>Date of Birth: {{ user.dateOfBirth}}</p>
-              <p>Phone Number: {{ user.phoneNumber }}</p>
-              <p>Email: {{ user.email }}</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+<app-users (usersChange)="onUsersChange($event)"></app-users>
+<div *ngFor="let user of users">
+  <!-- Check if the age is less than or equal to 25 before displaying the user -->
+  <div *ngIf="getAge(user.dateOfBirth) <= 25">
+    <p>First Name: {{ user.firstName }}</p>
+    <p>Last Name: {{ user.lastName }}</p>
+    <p>Date of Birth: {{ user.dateOfBirth }}</p>
+    <p>Phone Number: {{ user.phoneNumber }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>{{getAge(user.dateOfBirth)}}</p>
   </div>
-  
+</div>
